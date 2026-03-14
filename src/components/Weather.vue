@@ -122,18 +122,9 @@
 <script>
 import { LiquidGlass } from '../../node_modules/@wxperia/liquid-glass-vue/dist/index.js'
 import { store } from '../main.js'
-// import { useRootStore } from '@/stores/root.js'
-// import { rootStore } from '../main.js'
-// import { storeToRefs } from 'pinia'
 
 import LeftArea from '@/components/LeftArea.vue'
 import RightArea from '@/components/RightArea.vue'
-
-// const rootStore = useRootStore()
-
-// rootStore.getCongestion()
-
-// const { congestion } = storeToRefs(rootStore)
 
 export default {
   name: 'Weather',
@@ -176,18 +167,6 @@ export default {
     },
 
     changeColorTrafficLight() {
-
-      // let color = null
-      // // return console.log(this.traffic)
-      // if(0 < this.traffic.traffic_score.score || this.traffic.traffic_score.score < 4){
-      //   console.log(typeof(this.traffic.traffic_score.score))
-      //   return color = "#75B348"
-      // } else if(5 < this.traffic.traffic_score.score || this.traffic.traffic_score.score < 6){
-      //   return color = "#e69a20"
-      // } else if(7 < this.traffic.traffic_score.score || this.traffic.traffic_score.score < 10) {
-      //   // console.log(changeColorTrafficLight)
-      //   return color = "#ff5757"
-      // }
 
       if(this.traffic.traffic_score.score == null) {
         return "grey"
@@ -252,14 +231,12 @@ export default {
   left: 50%;
   width: 100%;
   height: 100%;
-  /* border-radius: 50px; */
   border-radius: 2.44vw;
   transform: translate(calc(-50% + 0px), calc(-50% + 0px)) scale(1);
   transition: 0.2s ease-out;
   pointer-events: none;
   mix-blend-mode: screen;
   opacity: 0.2;
-  /* padding: 1.5px; */
   padding: 0.074vw;
   mask:
     linear-gradient(rgb(0, 0, 0) 0px, rgb(0, 0, 0) 0px) content-box exclude,
@@ -283,14 +260,11 @@ export default {
   left: 50%;
   width: 100%;
   height: 100%;
-  /* border-radius: 50px; */
-  /* border-radius: 2.44vw; */
   border-radius: 1.44vw;
   transform: translate(calc(-50% + 0px), calc(-50% + 0px)) scale(1);
   transition: 0.2s ease-out;
   pointer-events: none;
   mix-blend-mode: overlay;
-  /* padding: 1px; */
   padding: 0.049vw;
   mask:
     linear-gradient(rgb(0, 0, 0) 0px, rgb(0, 0, 0) 0px) content-box exclude,
@@ -353,9 +327,6 @@ export default {
 }
 
 .current-time__value {
-  /* width: 13.542vw;
-  font-size: 1.667vw; */
-  /* font-size: 32px; */
   width: 14.842vw;
   font-size: 2.3vw;
   font-weight: bold;
@@ -377,8 +348,6 @@ export default {
   display: flex;
   align-items: center;
 }
-
-/* После исправления шрифтов вернуться сюда для побора ширины (вроде исправил, надо еще раз посмотреть) */
 
 .traffic-congestion__now__name {
   width: 28%;
@@ -508,64 +477,5 @@ export default {
 #dee4df
 
 */
-
-
-
-
-/* Ширина экарна 3840px   Высота экрана 2160px */
-
-@media (min-width: 3800px) {
-
-  /* .traffic-congestion__now__name{
-    font-size: 40px;
-    width: 28%;
-    text-shadow: none;
-  } */
-
-  /* .traffic-light {
-    width: 12%;
-  } */
-
-  /* .traffic-light__icon svg {
-    width: 6vh;
-    height: 6vh;
-  } */
-
-  /* .traffic-ligh__text {
-    text-shadow: none;
-    font-size: 50px;
-  } */
-
-  /* .average-speed {
-    width: 60%;
-  } */
-
-  /* .direct-speed {
-    column-gap: 7%;
-  } */
-
-  /* .direct-speed svg {
-
-  } */
-
-  /* .direct-speed__text {
-    font-size: 50px;
-    text-shadow: none;
-  } */
-
-  /* .reverse-speed {
-    column-gap: 7%;
-  } */
-
-  /* .reverse-speed svg {
-
-  } */
-
-  /* .reverse-speed__text {
-    font-size: 50px;
-    text-shadow: none;
-  } */
-
-}
 
 </style>

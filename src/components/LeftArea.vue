@@ -18,10 +18,11 @@
             class="my-glass"
           >
             <div class="glass-content">
+              <RainEffect />
               <div class="city">
                 <h2>Москва</h2>
                 <div class="current-date">
-                  Вторник, 14 Ноября
+                  {{ getCurrentDate.week }}, {{ getCurrentDate.day }} {{ getCurrentDate.month }}
                 </div>
               </div>
               <div class="temperature">
@@ -188,13 +189,15 @@
 <script>
 
 import { LiquidGlass } from '../../node_modules/@wxperia/liquid-glass-vue/dist/index.js'
+import RainEffect from "@/components/RainEffect.vue"
 import { store } from '../main.js'
 import { WMO } from '../codesWMO.js';
 
 export default {
   name: 'LeftArea',
   components: {
-    LiquidGlass
+    LiquidGlass,
+    RainEffect
   },
 
   data() {
@@ -443,7 +446,7 @@ export default {
 
                 // [1, 5, 9].includes(number)
                 // 0 || 1 || 2 || 3 || 45 || 48
-                
+
                 if([0, 1, 2, 3, 45, 48].includes(objHourlyDateTime.code)) {
                   objHourlyDateTime["icon"] = weather.day.image
                   objHourlyDateTime["name"] = weather.day.description
@@ -492,6 +495,33 @@ export default {
       return arrHourlyDateTime
 
     },
+
+    getCurrentDate() {
+      const currentDate = new Date(store.weather.current.time)
+
+      const newCurrentDate = {}
+
+      const optionsWeek = { weekday: "long" }
+      const firstSymbolWeek = currentDate.toLocaleDateString("ru-RU", optionsWeek).charAt(0).toUpperCase()
+      const otherSymbolWeek = currentDate.toLocaleDateString("ru-RU", optionsWeek).slice(1)
+      const currentWeek = firstSymbolWeek + otherSymbolWeek
+
+      const optionsDayMonth = {month: 'long', day: 'numeric'}
+      const firstSymbolMonth = currentDate.toLocaleDateString("ru-RU", optionsDayMonth).charAt(3).toUpperCase()
+      const otherSymbolMonth = currentDate.toLocaleDateString("ru-RU", optionsDayMonth).slice(4)
+      const currentMonth = firstSymbolMonth + otherSymbolMonth
+      console.log(currentMonth)
+
+      const currentDay = currentDate.toLocaleDateString("ru-RU", optionsDayMonth).slice(0,2)
+      console.log(currentDay)
+
+      newCurrentDate.week = currentWeek
+      newCurrentDate.day = currentDay
+      newCurrentDate.month = currentMonth
+      console.log(newCurrentDate)
+
+      return newCurrentDate
+    }
 
   },
 
