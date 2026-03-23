@@ -1,6 +1,5 @@
 <template>
   <div class="main-weather" v-if="getCongestion">
-    <!-- {{ traffic }} -->
     <div class="header-parent">
       <div class="header">
         <div class="header-child">
@@ -137,7 +136,6 @@ export default {
 
   data() {
     return {
-      // traffic: store.$state.api,
       currentTime: new Date(),
       timer: null,
       intervalWeather: null
@@ -149,27 +147,14 @@ export default {
   },
 
   mounted() {
-    // запуск интервала для обновления времени каждую секунду
 
     this.timer = setInterval(() => {
       this.currentTime = new Date()
     }, 1000);
 
-    // console.log(this.traffic)
-
-    // store.loadData()
-
-    // this.getTest()
-
   },
 
-  // beforeUpdate() {
-  //   this.intervalFetchWeather()
-  // },
-
   beforeUnmount() {
-    // очищение интервала, чтобы избежать утечки памяти
-
     this.clearInterval(this.timer)
 
     this.clearInterval(this.intervalWeather)
@@ -182,6 +167,7 @@ export default {
       this.intervalFetchWeather()
 
     },
+
     intervalFetchWeather() {
 
       this.intervalWeather = setInterval(() => {
@@ -191,26 +177,6 @@ export default {
 
     },
 
-    // getTest() {
-
-    //   async function loadData() {
-    //     try {
-    //       const res = await fetch('http://localhost:3000/api');
-    //       const data = await res.json();
-    //       console.log('Актуальные данные:', data);
-    //       console.log(this.traffic)
-    //     } catch (e) {
-    //       console.error('Ошибка:', e);
-    //     }
-    //   }
-
-    //   // первый запрос сразу
-    //   loadData();
-
-    //   // каждые 8 минут (8 * 60 * 1000)
-    //   setInterval(loadData, 8 * 60 * 1000);
-
-    // }
   },
 
   computed: {
@@ -518,21 +484,5 @@ export default {
   height: 100%;
   width: 50%;
 }
-
-
-
-/* Палитра цветов
-
-#bed3d9
-
-#50778a
-
-#85aab9
-
-#325368
-
-#dee4df
-
-*/
 
 </style>

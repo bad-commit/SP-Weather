@@ -79,9 +79,6 @@
                       <div class="weather-now-temp__deg">{{ getCurrentWeather.deg }}</div>
                     </div>
 
-                    <!-- <div class="weather-now__text"></div>
-                    <div class="weather-now__code"></div>
-                    <div class="weather-now__temp"></div> -->
                   </div>
 
                   <div class="today-hourly">
@@ -274,16 +271,16 @@ export default {
 
       // Восход
       const sunriseTime = new Date(this.weather.daily.sunrise[0])
-      console.log(sunriseTime)
+      // console.log(sunriseTime)
       const newSunriseTime = sunriseTime.toLocaleTimeString("ru-RU").slice(0, 5)
-      console.log(newSunriseTime)
+      // console.log(newSunriseTime)
 
       // Закат
 
       const sunsetTime = new Date(this.weather.daily.sunset[0])
-      console.log(sunsetTime)
+      // console.log(sunsetTime)
       const newSunsetTime = sunsetTime.toLocaleTimeString("ru-RU").slice(0, 5)
-      console.log(newSunsetTime)
+      // console.log(newSunsetTime)
 
 
 
@@ -430,9 +427,7 @@ export default {
               id: newId,
               time: hourlyLocaleTime,
               temperature: Math.round(hourlyTemp[i]), // Округление почасовой температуры
-              code: weatherCode[i],
-              // percent: "%",
-              // probability: precipitationProbability[i],
+              code: weatherCode[i]
 
             }
 
@@ -449,9 +444,6 @@ export default {
                 const weather = this.wmoCode[key]
                 // console.log(weather)
 
-                // [1, 5, 9].includes(number)
-                // 0 || 1 || 2 || 3 || 45 || 48
-
                 if([0, 1, 2, 3, 45, 48].includes(objHourlyDateTime.code)) {
                   objHourlyDateTime["icon"] = weather.day.image
                   objHourlyDateTime["name"] = weather.day.description
@@ -461,35 +453,15 @@ export default {
                   objHourlyDateTime["probability"] = precipitationProbability[i]
                   objHourlyDateTime["percent"] = "%"
                 }
-                console.log(typeof(objHourlyDateTime.code))
-                // objHourlyDateTime["icon"] = weather.day.image
-                // objHourlyDateTime["name"] = weather.day.description
 
               }
 
             }
 
-
             // Добавление объектов в массив почасовой погоды
-
             arrHourlyDateTime.push(objHourlyDateTime)
 
           }
-
-          // К значению "id" прибавление значения "i" (т.к. были случаи, когда id совпадал у нескольких объектов)
-
-          // let newId = null
-
-          // for (let i = 0; i < arrHourlyDateTime.length; i++) {
-              
-          //   console.log(i)
-
-          //   newId = Date.now() + i
-
-          //   console.log(newId)
-
-          // }
-          
 
         }
 
@@ -619,7 +591,6 @@ export default {
 }
 
 .glass__warp {
-  /* backdrop-filter: blur(3.5px) saturate(100%) !important; */
   backdrop-filter: blur(4.5px) saturate(100%) !important;
 }
 
@@ -651,14 +622,10 @@ export default {
   justify-content: center;
   width: 100%;
   font-size: 1.545vw;
-  /* font-size: 1.045vw; */
   color: #50778a;
 }
 
 .temperature {
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
   height: 40%;
   width: 100%;
 }
@@ -703,7 +670,6 @@ export default {
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
-  /* border-bottom: 2px solid black; */
   height: 40%;
   width: 100%;
   gap: 1.042vw;
@@ -742,10 +708,6 @@ export default {
   justify-content: center;
 }
 
-/* .temperature-difference-min__value {
-
-} */
-
 .temperature-difference-min__deg {
   font-size: 1.955vw;
   padding-top: 0.131vw;
@@ -763,16 +725,10 @@ export default {
   justify-content: center;
 }
 
-/* .temperature-difference-max__value {
-
-} */
-
 .temperature-difference-max__deg {
   font-size: 1.955vw;
   padding-top: 0.131vw;
 }
-
-
 
 
 
@@ -805,12 +761,9 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   width: 20%;
   height: 100%;
-
   padding-left: 0.391vw;
-
   color: #fff;
 }
 
@@ -818,7 +771,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-
   height: 25%;
   width: 100%;
 }
@@ -874,8 +826,6 @@ export default {
 
 .today-hourly__list {
   display: flex;
-  /* justify-content: flex-end; */
-  /* justify-content: flex-start; */
   justify-content: space-around;
   align-items: center;
   height: 100%;
@@ -901,10 +851,6 @@ export default {
   font-size: 1.042vw;
   color: #d8edf6;
 }
-
-/* .today-hourly-time__value {
-
-} */
 
 .today-hourly-icon {
   display: flex;
@@ -934,7 +880,6 @@ export default {
 }
 
 .today-hourly-temp__value {
-  /* font-size: 1.563vw; */
   font-size: 1.763vw;
   padding-bottom: 0.5vw;
 }
@@ -951,8 +896,6 @@ export default {
   height: 15%;
   width: 100%;
   color: #92a8b2;
-  /* color: #92a8b2c9; */
-  /* color: #92a8b2c9; */
 }
 
 .today-hourly-probability__value {
@@ -962,8 +905,6 @@ export default {
 .today-hourly-probability__percent {
   font-size: 0.886vw;
 }
-
-
 
 
 
@@ -1298,7 +1239,6 @@ export default {
 }
 
 .sunrise {
-  /* color: #f65a5a73; */
   color: #e77e7e99;
 }
 
@@ -1306,339 +1246,5 @@ export default {
   color: #92a8b2c9;
   font-size: 1.1vw;
 }
-
-
-
-
-
-/* .temperature-value {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-} */
-
-/* .temperature-deg {
-  display: flex;
-  justify-content: center;  
-  width: 100%;
-  height: 100%;
-} */
-
-/* .info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50%;
-  width: 100%;
-} */
-
-/* .content-wrapper {
-  padding: 20px;
-}
-
-.glass-test {
-  width: 300px;
-  height: 300px;
-}
-
-.my-glass {
-  width: 100%;
-  height: 100%;
-}
-
-.glass-content {
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  padding-top: 40%;
-} */
-
-/* .content-wrapper {
-  display: flex;
-  margin: 0 auto;
-  height: 50%;
-  align-items: center;
-  justify-content: center;
-}
-
-.glass-test {
-  height: 100%;
-  width: 100%;
-
-  position: relative;
-  overflow: hidden;
-}
-
-.my-glass {
-  width: 100%;
-  height: 100%;
-}
-
-.glass-content {
-  padding: 10px;
-  color: black;
-} */
-
-/* .glass-test .bg-black .transition-all .duration-150 .ease-in-out .pointer-events-none .opacity-0 {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  border-radius: 20px;
-  transform: translate(calc(-50% + 0px), calc(-50% + 0px)) scale(1);
-  transition: 0.2s ease-out;
-  height: 0px;
-  width: 0px;
-}
-
-.glass-test .bg-black .transition-all .duration-150 .ease-in-out .pointer-events-none .mix-blend-overlay .opacity-0{
-position: relative;
-  top: 50%;
-  left: 50%;
-  border-radius: 20px;
-  transform: translate(calc(-50% + 0px), calc(-50% + 0px)) scale(1);
-  transition: 0.2s ease-out;
-  height: 0px;
-  width: 0px;
-} */
-
-/* .glass-test .relative .my-glass {
-  transform: translate(calc(-50% + 0px), calc(-50% + 0px)) scale(1);
-  transition: 0.2s ease-out;
-  height: 100%;
-  width: 100%;
-  display: contents;
-}
-
-.glass-test .relative .my-glass svg {
-  position: absolute;
-  width: 0px;
-  height: 0px;
-}
-
-.glass-test .glass__warp {
-  filter: url(#38a02298-6232-4933-9730-c272421d3fe1);
-  backdrop-filter: blur(4px) saturate(100%);
-  position: absolute;
-  inset: 0px;
-} */
-
-
-
-
-
-/* Ширина экарна 3840px   Высота экрана 2160px */
-
-@media (min-width: 3800px) {
-
-  /* .city {
-    text-shadow: none
-  } */
-
-  /* .city h2 {
-    font-size: 80px;
-    margin-bottom: 45px;
-  } */
-
-  /* .current-date {
-    font-size: 40px;
-  } */
-
-  /* .temperature-value {
-    font-size: 20em;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  } */
-
-  /* .temperature-deg { 
-    font-size: 10em;
-    font-weight: 300;
-    height: 65%;
-    display: flex;
-    align-items: flex-start;
-
-    display: flex;
-    justify-content: center;  
-    width: 100%;
-    height: 100%;
-  } */
-
-  /* .temperature-deg__value {
-    font-stretch: condensed;
-  } */
-
-  /* .type-weather-text {
-    font-size: 5.5em;
-  } */
-
-  /* .temperature-difference {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 400;
-    font-size: 4em;
-  } */
-
-  /* .temperature-difference span {
-    font-size: 80%;
-  } */
-
-  /* .temperature-difference-min {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-  } */
-
-  /* .temperature-difference-min__value {
-
-  } */
-
-  /* .temperature-difference-min__deg {
-    font-size: 75px;
-    padding-top: 5px;
-  } */
-
-  /* .temperature-difference__slash {
-    font-weight: 300;
-    font-size: 70%;
-    margin-right: 10px;
-  } */
-
-  /* .temperature-difference-max {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-  } */
-
-  /* .temperature-difference-max__value {
-
-  } */
-
-  /* .temperature-difference-max__deg {
-    font-size: 75px;
-    padding-top: 5px;
-  } */
-
-  /* .weather-now {
-    padding-left: 15px;
-  } */
-
-  /* .weather-now-text__value {
-    font-size: 2.5em;
-  } */
-
-  /* .weather-now-icon {
-
-  } */
-
-  /* .weather-now__code {
-    height: 210px;
-    width: 210px;
-    padding-bottom: 35px;
-  } */
-
-  /* .weather-now-temp__value {
-    font-size: 3.8em;
-  } */
-
-  /* .weather-now-temp__deg {
-    font-size: 2.5em;
-    padding-bottom: 10px;
-  } */
-
-  /* .today-hourly__list {
-    padding-right: 75px;
-    gap: 30px;
-  } */
-
-  /* .today-hourly__item {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-  } */
-
-  /* .today-hourly-time {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: 25%;
-    width: 100%;
-
-    font-size: 2em;
-  } */
-
-  /* .today-hourly-time__value {
-
-  } */
-
-  /* .today-hourly-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 35%;
-    width: 100%;
-  } */
-
-  /* .today-hourly__code {
-
-  } */
-
-  /* .today-hourly-temp {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 25%;
-    width: 100%;
-  } */
-
-  /* .today-hourly-temp__value {
-    font-size: 3em;
-  } */
-
-  /* .today-hourly-temp__deg {
-    font-size: 3em;
-  } */
-
-  /* .today-hourly-probability {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    height: 15%;
-    width: 100%;
-  } */
-
-  /* .today-hourly-probability__value {
-    font-size: 1.7em;
-  } */
-
-  /* .today-hourly-probability__percent {
-    font-size: 1.7em;
-  } */
-
-  /* .info-weather-today__other-top {
-
-  } */
-
-  /* .info-weather-today__other-bottom {
-
-  } */
-
-
-
-
-}
-
-
-/*  
-font-size: 75px;
-padding-top: 5px; */
-
-
 
 </style>

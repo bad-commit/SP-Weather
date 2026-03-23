@@ -2,33 +2,6 @@
   <div class="rain-wrapper">
     <div class="rain front-row" ref="frontRain"></div>
     <div class="rain back-row" ref="backRain"></div>
-
-    <!-- <div class="toggles">
-      <div
-        class="splat-toggle toggle"
-        :class="{ active: splatActive }"
-        @click="toggleSplat"
-      >
-        SPLAT
-      </div>
-
-      <div
-        class="back-row-toggle toggle"
-        :class="{ active: backRowActive }"
-        @click="toggleBackRow"
-      >
-        BACK<br />ROW
-      </div>
-
-      <div
-        class="single-toggle toggle"
-        :class="{ active: singleActive }"
-        @click="toggleSingle"
-      >
-        SINGLE
-      </div>
-    </div> -->
-
   </div>
 </template>
 
@@ -88,25 +61,8 @@ export default {
       back.insertAdjacentHTML("beforeend", backDrops);
     },
 
-    // toggleSplat() {
-    //   this.splatActive = !this.splatActive;
-    //   document.body.classList.toggle("splat-toggle");
-    //   this.makeItRain();
-    // },
-
-    // toggleBackRow() {
-    //   this.backRowActive = !this.backRowActive;
-    //   document.body.classList.toggle("back-row-toggle");
-    //   this.makeItRain();
-    // },
-
-    // toggleSingle() {
-    //   this.singleActive = !this.singleActive;
-    //   document.body.classList.toggle("single-toggle");
-    //   this.makeItRain();
-    // }
   }
-};
+}
 </script>
 
 <style>
@@ -155,7 +111,6 @@ body.back-row-toggle .rain.back-row {
 }
 
 .stem {
-  /* width: 1px; */
   width: 0.15vw;
   height: 60%;
   margin-left: 7px;
@@ -179,11 +134,8 @@ body.back-row-toggle .rain.back-row {
 }
 
 .splat {
-  /* width: 15px; */
   width: 0.72vw;
-  /* height: 10px; */
   height: 0.48vw;
-  /* border-top: 2px dotted rgba(255, 255, 255, 0.5); */
   border-top: 0.12vw dotted rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   opacity: 1;
@@ -215,62 +167,4 @@ body.splat-toggle .splat {
   }
 }
 
-/* .toggles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
-}
-
-.toggle {
-  position: absolute;
-  left: 20px;
-  width: 50px;
-  height: 50px;
-  line-height: 51px;
-  box-sizing: border-box;
-  text-align: center;
-  font-family: sans-serif;
-  font-size: 10px;
-  font-weight: bold;
-  background-color: rgba(255, 255, 255, 0.2);
-  color: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s;
-} */
-
-/* .toggle:hover {
-  background-color: rgba(255, 255, 255, 0.25);
-}
-
-.toggle:active {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-.toggle.active {
-  background-color: rgba(255, 255, 255, 0.4);
-} */
-
-/* .splat-toggle {
-  top: 20px;
-} */
-
-/* .back-row-toggle {
-  top: 90px;
-  line-height: 12px;
-  padding-top: 14px;
-} */
-
-/* .single-toggle {
-  top: 160px;
-} */
-
-/* body.single-toggle .drop {
-  display: none;
-}
-
-body.single-toggle .drop:nth-child(10) {
-  display: block;
-} */
 </style>

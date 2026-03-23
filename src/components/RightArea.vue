@@ -89,7 +89,6 @@ export default {
 
       console.log(this.weather.daily)
 
-      // const daily = this.weather.daily
       const currentDateTime = this.weather.current.time
       const dailyTime = this.weather.daily.time
       const weatherCode = this.weather.daily.weather_code
@@ -114,7 +113,6 @@ export default {
 
         console.log(dayName)
 
-        
 
         // Изменение формата даты sunrise и sunset, а также перевод времени в минуты
 
@@ -169,9 +167,6 @@ export default {
         // Расчет позиционирования точки внутри progress-bar
 
         const calcCurrentTime = (currentTotalMinutes * 100) / 1440
-
-
-
 
 
         // К значению "Date.now()" прибавление значения "index" (т.к. были случаи, когда id совпадал у нескольких объектов)
@@ -316,7 +311,6 @@ export default {
 }
 
 .glass__warp {
-  /* backdrop-filter: blur(3.5px) saturate(100%) !important; */
   backdrop-filter: blur(4.5px) saturate(100%) !important;
 }
 
@@ -326,6 +320,7 @@ export default {
   height: 100%;
   text-shadow: none;
 }
+
 
 
 .week-weather {
@@ -343,27 +338,9 @@ export default {
   color: #092124;
 }
 
-.week-weather-name__text {
-  /* text-shadow: none;
-  font-size: 2vw;
-  font-weight: bold; */
-  /* padding-top: 2.259vw; */
-  /* padding-top: 2.844vw; */
-  /* padding-top: 1.66vw; */
-
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center;
-  justify-content: center; */
-  /* height: 100%; */
-}
-
 .week-weather-name__text h2 {
   font-size: 2vw;
   margin-bottom: 0.6vw;
-  /* height: 50%; */
-  /* padding-top: 2.259vw;
-  margin: 0; */
 }
 
 .week-weather-items {
@@ -398,7 +375,6 @@ export default {
   width: 8%;
   font-size: 1.963vw;
   color: #011725c7;
-  /* font-size: 1.763vw; */
 }
 
 .item-code {
@@ -426,7 +402,6 @@ export default {
 
 .item-probability span {
   font-size: 1.363vw;
-  /* font-size: 1.263vw; */
 }
 
 .item-temperature {
@@ -464,19 +439,10 @@ export default {
   height: 10%;
   width: 95%;
   background: radial-gradient(circle, #faae7b33, #1c1f59e8);
-  /* background: radial-gradient(circle, #432371, #1c1f59e8); */
-  /* background: #131b67; */
-  /* background-color: #32376be8; */
-  /* background: linear-gradient(#32376be8, #242645e8); */
-
-  /* для радиального градиента closest-corner */
-
   border-radius: 55px;
 }
 
 .sun-line {
-  /* background-color: #a87602; */
-  /* background: linear-gradient(to right, #faae7b, #432371); */
   background: linear-gradient(to right, #ffeda0cf, #ffa585db);
   position: absolute;
   height: 100%;
@@ -504,8 +470,6 @@ export default {
   transform: translateX(-50%);
   font-size: 0.9vw;
   color: #c08282;
-  /* color: #011725c7; */
-  /* font-size: 0.85vw; */
 }
 
 .time-sunset {
@@ -514,35 +478,12 @@ export default {
   transform: translateX(-50%);
   font-size: 0.9vw;
   color: #6b82aa;
-  /* color: #c08282; */
-  /* color: #011725c7; */
   font-size: 0.85vw;
 }
-
-/* .current-circle {
-  position: absolute;
-} */
-
-/* .current-circle li:first-of-type {
-  position: absolute;
-  height: 100%;
-  width: 5%;
-  border-radius: 50%;
-  background-color: #fff;
-} */
-
-/* ul:first-of-type li .current-circle {
-  position: absolute;
-  height: 100%;
-  width: 5%;
-  border-radius: 50%;
-  background-color: #fff;
-} */
 
 ul:first-of-type li:first-child div .current-circle {
   position: absolute;
   height: 100%;
-  /* width: 5%; */
   width: 0.95vh;
   border-radius: 50%;
   background-color: #fff;
