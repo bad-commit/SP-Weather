@@ -1,5 +1,6 @@
 <template>
-  <div class="main-weather">
+  <div class="main-weather" v-if="getCongestion">
+    <!-- {{ traffic }} -->
     <div class="header-parent">
       <div class="header">
         <div class="header-child">
@@ -136,10 +137,15 @@ export default {
 
   data() {
     return {
-      traffic: store.congestion,
+      // traffic: store.$state.api,
       currentTime: new Date(),
-      timer: null
+      timer: null,
+      intervalWeather: null
     }
+  },
+
+  created() {
+    this.initData()
   },
 
   mounted() {
@@ -147,18 +153,65 @@ export default {
 
     this.timer = setInterval(() => {
       this.currentTime = new Date()
-    }, 1000)
+    }, 1000);
+
+    // console.log(this.traffic)
+
+    // store.loadData()
+
+    // this.getTest()
 
   },
+
+  // beforeUpdate() {
+  //   this.intervalFetchWeather()
+  // },
 
   beforeUnmount() {
     // очищение интервала, чтобы избежать утечки памяти
 
-    clearInterval(this.timer)
+    this.clearInterval(this.timer)
 
+    this.clearInterval(this.intervalWeather)
   },
 
-  methods: {},
+  methods: {
+    async initData(){
+      await store.loadData()
+    
+      this.intervalFetchWeather()
+
+    },
+    intervalFetchWeather() {
+
+      this.intervalWeather = setInterval(() => {
+        console.log("8 минут")
+        store.loadData()
+      }, 8 * 60 * 1000)
+
+    },
+
+    // getTest() {
+
+    //   async function loadData() {
+    //     try {
+    //       const res = await fetch('http://localhost:3000/api');
+    //       const data = await res.json();
+    //       console.log('Актуальные данные:', data);
+    //       console.log(this.traffic)
+    //     } catch (e) {
+    //       console.error('Ошибка:', e);
+    //     }
+    //   }
+
+    //   // первый запрос сразу
+    //   loadData();
+
+    //   // каждые 8 минут (8 * 60 * 1000)
+    //   setInterval(loadData, 8 * 60 * 1000);
+
+    // }
+  },
 
   computed: {
     getCongestion() {
@@ -166,14 +219,18 @@ export default {
       return this.traffic
     },
 
-    changeColorTrafficLight() {
+    traffic() {
+      console.log(store.$state.api.congestion)
+      return store.$state.api.congestion
+    },
 
+    changeColorTrafficLight() {
       if(this.traffic.traffic_score.score == null) {
         return "grey"
       } else if(0 <= this.traffic.traffic_score.score && this.traffic.traffic_score.score <= 4) {
         return "green"
       } else if(5 <= this.traffic.traffic_score.score && this.traffic.traffic_score.score <= 6) {
-        return "yellow"
+        return "#ffc400"
       } else if(this.traffic.traffic_score.score >= 7 && this.traffic.traffic_score.score <= 10) {
         return "red"
       } else return "grey"

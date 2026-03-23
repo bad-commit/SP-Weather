@@ -72,7 +72,6 @@ export default {
 
   data() {
     return {
-      weather: store.weather,
       wmoCode: WMO
     }
   },
@@ -80,6 +79,12 @@ export default {
   methods: {},
 
   computed: {
+
+    weather() {
+      console.log(store.$state.api.weather)
+      return store.$state.api.weather
+    },
+
     getDailyWeather() {
 
       console.log(this.weather.daily)
@@ -311,7 +316,8 @@ export default {
 }
 
 .glass__warp {
-  backdrop-filter: blur(3.5px) saturate(100%) !important;
+  /* backdrop-filter: blur(3.5px) saturate(100%) !important; */
+  backdrop-filter: blur(4.5px) saturate(100%) !important;
 }
 
 .glass-content {
@@ -434,7 +440,9 @@ export default {
 
 .item-temperature__min {
   /* color: #858585; */
-  color: #3e4761;
+  color: #ababab;
+  /* color: #3e4761; */
+  /* color: #8ba8ff; */
 }
 
 .item-temperature__max {
@@ -494,16 +502,21 @@ export default {
   position: absolute;
   top: 140%;
   transform: translateX(-50%);
-  font-size: 0.85vw;
-  color: #011725c7;
+  font-size: 0.9vw;
+  color: #c08282;
+  /* color: #011725c7; */
+  /* font-size: 0.85vw; */
 }
 
 .time-sunset {
   position: absolute;
   top: 140%;
   transform: translateX(-50%);
+  font-size: 0.9vw;
+  color: #6b82aa;
+  /* color: #c08282; */
+  /* color: #011725c7; */
   font-size: 0.85vw;
-  color: #011725c7;
 }
 
 /* .current-circle {

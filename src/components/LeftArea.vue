@@ -18,7 +18,7 @@
             class="my-glass"
           >
             <div class="glass-content">
-              <RainEffect />
+              <RainEffect v-if="[63, 65, 66, 67, 80, 81, 82, 95, 96, 99].includes(this.weather.current.weather_code)" />
               <div class="city">
                 <h2>Москва</h2>
                 <div class="current-date">
@@ -202,7 +202,6 @@ export default {
 
   data() {
     return {
-      weather: store.weather,
       wmoCode: WMO
     }
   },
@@ -210,6 +209,12 @@ export default {
   methods: {},
 
   computed: {
+
+    weather() {
+      console.log(store.$state.api.weather)
+      return store.$state.api.weather
+    },
+
     getCurrentWeather() {
 
       console.log(this.weather.current)
@@ -497,7 +502,7 @@ export default {
     },
 
     getCurrentDate() {
-      const currentDate = new Date(store.weather.current.time)
+      const currentDate = new Date(this.weather.current.time)
 
       const newCurrentDate = {}
 
@@ -614,7 +619,8 @@ export default {
 }
 
 .glass__warp {
-  backdrop-filter: blur(3.5px) saturate(100%) !important;
+  /* backdrop-filter: blur(3.5px) saturate(100%) !important; */
+  backdrop-filter: blur(4.5px) saturate(100%) !important;
 }
 
 .glass-content {
