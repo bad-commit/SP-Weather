@@ -689,7 +689,8 @@ export default {
 }
 
 .type-weather-text {
-  font-size: 2.865vw;
+  font-size: 2.5vw;
+  /* font-size: 2.865vw; */
   color:#0d2a32;
 }
 
