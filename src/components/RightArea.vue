@@ -81,13 +81,10 @@ export default {
   computed: {
 
     weather() {
-      console.log(store.$state.api.weather)
       return store.$state.api.weather
     },
 
     getDailyWeather() {
-
-      console.log(this.weather.daily)
 
       const currentDateTime = this.weather.current.time
       const dailyTime = this.weather.daily.time
@@ -103,46 +100,35 @@ export default {
 
       dailyTime.forEach((item, index) => {
 
-        console.log(item, index)
-
         // Отображение сокращенного наименования дня недели в верхнем регистре 
 
         const newDailyTime = new Date(dailyTime[index])
         const options = { weekday: "short" }
         const dayName = newDailyTime.toLocaleDateString("ru-RU", options).toUpperCase()
 
-        console.log(dayName)
 
 
         // Изменение формата даты sunrise и sunset, а также перевод времени в минуты
 
 
         // Восход
-
         const sunriseTime = new Date(sunrise[index])
-        console.log(sunriseTime)
         const newSunriseTime = sunriseTime.toLocaleTimeString("ru-RU").slice(0, 5)
-        console.log(newSunriseTime)
 
         // Перевод времени восхода в минуты
         const [sunriseHours, sunriseMinutes] = newSunriseTime.split(':').map(Number);
         const sunriseTotalMinutes = (sunriseHours * 60) + sunriseMinutes;
-        console.log(sunriseTotalMinutes)
 
 
         // Закат
 
         const sunsetTime = new Date(sunset[index])
-        console.log(sunsetTime)
         const newSunsetTime = sunsetTime.toLocaleTimeString("ru-RU").slice(0, 5)
-        console.log(newSunsetTime)
 
         // Перевод времени заката в минуты
 
         const [sunsetHours, sunsetMinutes] = newSunsetTime.split(':').map(Number);
         const sunsetTotalMinutes = (sunsetHours * 60) + sunsetMinutes;
-        console.log(sunsetTotalMinutes)
-
 
 
         // Расчет длины полосы рассвета / заката
@@ -152,12 +138,10 @@ export default {
         const lengthLine = calcSunset - calcSunrise
 
 
-
         // Позиционирование круга для отображения текущего времени внутри progress-bar
 
         const currentTime = new Date(currentDateTime)
         const newCurrentTime = currentTime.toLocaleTimeString("ru-RU").slice(0, 5)
-        console.log(newCurrentTime)
 
         // Перевод текущего времени в минуты
 
@@ -172,7 +156,6 @@ export default {
         // К значению "Date.now()" прибавление значения "index" (т.к. были случаи, когда id совпадал у нескольких объектов)
 
         const newId = Date.now() + index
-        console.log(newId)
 
 
         const objDailyWeather = {
@@ -195,13 +178,9 @@ export default {
 
         for (let key in this.wmoCode) {
 
-          // console.log(key)
-
           if(key == objDailyWeather.code) {
-            // console.log(this.wmoCode[key].day)
 
             const weather = this.wmoCode[key]
-            // console.log(weather)
                 
             objDailyWeather["icon"] = weather.day.image
             objDailyWeather["name"] = weather.day.description
@@ -213,8 +192,6 @@ export default {
         arrDailyWeather.push(objDailyWeather)
 
       })
-
-      console.log(arrDailyWeather)
 
       return arrDailyWeather
 
@@ -414,10 +391,7 @@ export default {
 }
 
 .item-temperature__min {
-  /* color: #858585; */
   color: #ababab;
-  /* color: #3e4761; */
-  /* color: #8ba8ff; */
 }
 
 .item-temperature__max {

@@ -11,14 +11,10 @@ export default {
 
   data() {
     return {
-      splatActive: true,
-      backRowActive: true,
-      singleActive: false
     };
   },
 
   mounted() {
-    document.body.classList.add("splat-toggle", "back-row-toggle");
     this.makeItRain();
   },
 
@@ -26,6 +22,7 @@ export default {
     makeItRain() {
       const front = this.$refs.frontRain;
       const back = this.$refs.backRain;
+      document.body.classList.add("splat-toggle", "back-row-toggle");
 
       front.innerHTML = "";
       back.innerHTML = "";

@@ -181,12 +181,10 @@ export default {
 
   computed: {
     getCongestion() {
-      console.log(this.traffic)
       return this.traffic
     },
 
     traffic() {
-      console.log(store.$state.api.congestion)
       return store.$state.api.congestion
     },
 

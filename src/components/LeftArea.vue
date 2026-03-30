@@ -208,14 +208,10 @@ export default {
   computed: {
 
     weather() {
-      console.log(store.$state.api.weather)
       return store.$state.api.weather
     },
 
     getCurrentWeather() {
-
-      console.log(this.weather.current)
-
 
       // Округление и изменение формата даты
 
@@ -223,13 +219,10 @@ export default {
       const date = new Date(current.time)
 
       const roundedCurrentDateTime = new Date(Math.round(date.getTime() / 3600000) * 3600000) // округление текущего времени до ближайшего часа
-      console.log(roundedCurrentDateTime)
 
       const roundedCurrentLocaleDateTime = roundedCurrentDateTime.toLocaleString("ru-RU", {
         timeZone: 'Europe/Moscow',
       })
-
-      console.log(roundedCurrentLocaleDateTime)
 
 
       const hourly  = this.weather.hourly
@@ -244,45 +237,30 @@ export default {
 
         hourlyLocaleDateTime.push(newDateLocale)
 
-        // console.log(newDateLocale)
-
       }
-
-      console.log(hourlyLocaleDateTime)
 
       let currentVisibility = null // переменная со значением текущей видимости
 
       hourlyLocaleDateTime.forEach((item, index) => {
 
         if(roundedCurrentLocaleDateTime === item) {
-          console.log(index, item)
-
           currentVisibility = this.weather.hourly.visibility[index]
-
         }
 
       })
-      
-      // console.log(currentVisibility)
-
 
 
       // Изменение формата даты для sunrise и sunset
 
       // Восход
       const sunriseTime = new Date(this.weather.daily.sunrise[0])
-      // console.log(sunriseTime)
       const newSunriseTime = sunriseTime.toLocaleTimeString("ru-RU").slice(0, 5)
-      // console.log(newSunriseTime)
+
 
       // Закат
 
       const sunsetTime = new Date(this.weather.daily.sunset[0])
-      // console.log(sunsetTime)
       const newSunsetTime = sunsetTime.toLocaleTimeString("ru-RU").slice(0, 5)
-      // console.log(newSunsetTime)
-
-
 
 
 
@@ -309,13 +287,10 @@ export default {
 
       for (let key in this.wmoCode) {
 
-        // console.log(key)
 
         if(key == nowWeather.weatherCode) {
-          // console.log(this.wmoCode[key].day)
 
           const weather = this.wmoCode[key]
-          // console.log(weather)
       
           nowWeather["icon"] = weather.day.image
           nowWeather["name"] = weather.day.description
@@ -323,9 +298,6 @@ export default {
         }
 
       }
-
-
-      console.log(nowWeather)
 
       return nowWeather
     },
@@ -336,32 +308,19 @@ export default {
       const hourlyTemp = this.weather.hourly.temperature_2m
       const weatherCode = this.weather.hourly.weather_code
       const precipitationProbability = this.weather.hourly.precipitation_probability
-      
-
-
-      console.log(current.time)
-      console.log(hourly.time)
-
       const date = new Date(current.time)
-
-      console.log(date)
-
 
 
       // Округление и изменение формата даты
 
       const roundedCurrentDateTime = new Date(Math.ceil(date.getTime() / 3600000) * 3600000) // округление текущего времени в большую сторону
 
-      console.log(roundedCurrentDateTime)
 
       const roundedCurrentLocaleDateTime = roundedCurrentDateTime.toLocaleString("ru-RU", {
       timeZone: 'Europe/Moscow',
 
       })
 
-      console.log(roundedCurrentLocaleDateTime)
-
-      console.log(hourly.time)
 
       const hourlyLocaleDateTime = [] // массив дат с измененным форматом
 
@@ -373,11 +332,7 @@ export default {
 
         hourlyLocaleDateTime.push(newDateLocale)
 
-        console.log(newDateLocale)
-
       }
-
-      console.log(hourlyLocaleDateTime)
 
 
       // Массив объектов почасовой погоды
@@ -391,36 +346,17 @@ export default {
 
         if(roundedCurrentLocaleDateTime === item) {
 
-          console.log(index, item)
-
           for(let i = index; i < index + 5; i++) {
-
-            console.log(item)
-            console.log(i)
-
 
             // Отображение времени без даты
 
             const newHourlyTime = new Date(hourly.time[i])
-            console.log(newHourlyTime)
             const hourlyLocaleTime = newHourlyTime.toLocaleTimeString("ru-RU").slice(0, 5)
-            console.log(hourlyLocaleTime)
-
-            console.log(hourlyLocaleDateTime[i])
-
-
-            console.log(hourlyTemp[i])                // Проверка почасовой температуры
-            console.log(weatherCode[i])               // Проверка кода погода
-            console.log(precipitationProbability[i])  // Проверка вероятности осадков
-
 
 
             // К значению "Date.now()" прибавление значения "i" (т.к. были случаи, когда id совпадал у нескольких объектов)
 
             const newId = Date.now() + i
-            console.log(i)
-            console.log(newId)
-
 
 
             const objHourlyDateTime = {
@@ -436,13 +372,9 @@ export default {
 
             for (let key in this.wmoCode) {
 
-              // console.log(key)
-
               if(key == objHourlyDateTime.code) {
-                // console.log(this.wmoCode[key].day)
               
                 const weather = this.wmoCode[key]
-                // console.log(weather)
 
                 if([0, 1, 2, 3, 45, 48].includes(objHourlyDateTime.code)) {
                   objHourlyDateTime["icon"] = weather.day.image
@@ -466,8 +398,6 @@ export default {
         }
 
       })
-
-      console.log(arrHourlyDateTime)
       
       return arrHourlyDateTime
 
@@ -487,15 +417,12 @@ export default {
       const firstSymbolMonth = currentDate.toLocaleDateString("ru-RU", optionsDayMonth).charAt(3).toUpperCase()
       const otherSymbolMonth = currentDate.toLocaleDateString("ru-RU", optionsDayMonth).slice(4)
       const currentMonth = firstSymbolMonth + otherSymbolMonth
-      console.log(currentMonth)
 
       const currentDay = currentDate.toLocaleDateString("ru-RU", optionsDayMonth).slice(0,2)
-      console.log(currentDay)
 
       newCurrentDate.week = currentWeek
       newCurrentDate.day = currentDay
       newCurrentDate.month = currentMonth
-      console.log(newCurrentDate)
 
       return newCurrentDate
     }
@@ -1053,7 +980,6 @@ export default {
 
 .current-relative-humidity__name {
   font-size: 0.886vw;
-  
 }
 
 .current-relative-humidity__value {
