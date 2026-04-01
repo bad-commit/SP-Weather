@@ -217,6 +217,7 @@ export default {
 
       const current = this.weather.current
       const date = new Date(current.time)
+      const currentHour = date.toLocaleTimeString("ru-RU").slice(0, 5)
 
       const roundedCurrentDateTime = new Date(Math.round(date.getTime() / 3600000) * 3600000) // округление текущего времени до ближайшего часа
 
@@ -291,9 +292,14 @@ export default {
         if(key == nowWeather.weatherCode) {
 
           const weather = this.wmoCode[key]
-      
-          nowWeather["icon"] = weather.day.image
-          nowWeather["name"] = weather.day.description
+
+          if(currentHour >= nowWeather.sunrise && currentHour < nowWeather.sunset) {
+            nowWeather["icon"] = weather.day.image
+            nowWeather["name"] = weather.day.description
+          } else {
+            nowWeather["icon"] = weather.night.image
+            nowWeather["name"] = weather.night.description
+          }
 
         }
 
@@ -317,7 +323,7 @@ export default {
 
 
       const roundedCurrentLocaleDateTime = roundedCurrentDateTime.toLocaleString("ru-RU", {
-      timeZone: 'Europe/Moscow',
+        timeZone: 'Europe/Moscow',
 
       })
 
@@ -375,13 +381,27 @@ export default {
               if(key == objHourlyDateTime.code) {
               
                 const weather = this.wmoCode[key]
+                
 
                 if([0, 1, 2, 3, 45, 48].includes(objHourlyDateTime.code)) {
-                  objHourlyDateTime["icon"] = weather.day.image
-                  objHourlyDateTime["name"] = weather.day.description
+
+                  if(objHourlyDateTime.time >= this.getCurrentWeather.sunrise && objHourlyDateTime.time < this.getCurrentWeather.sunset) {
+                    objHourlyDateTime["icon"] = weather.day.image
+                    objHourlyDateTime["name"] = weather.day.description
+                  } else {
+                    objHourlyDateTime["icon"] = weather.night.image
+                    objHourlyDateTime["name"] = weather.night.description
+                  }
+                  
                 } else {
-                  objHourlyDateTime["icon"] = weather.day.image
-                  objHourlyDateTime["name"] = weather.day.description
+                  
+                  if(objHourlyDateTime.time >= this.getCurrentWeather.sunrise && objHourlyDateTime.time < this.getCurrentWeather.sunset) {
+                    objHourlyDateTime["icon"] = weather.day.image
+                    objHourlyDateTime["name"] = weather.day.description
+                  } else {
+                    objHourlyDateTime["icon"] = weather.night.image
+                    objHourlyDateTime["name"] = weather.night.description
+                  }
                   objHourlyDateTime["probability"] = precipitationProbability[i]
                   objHourlyDateTime["percent"] = "%"
                 }
