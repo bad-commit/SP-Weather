@@ -18,11 +18,11 @@
             class="my-glass"
           >
             <div class="glass-content">
-              <RainEffect v-if="[63, 65, 66, 67, 80, 81, 82, 95, 96, 99].includes(this.weather.current.weather_code)" />
+              <RainEffect v-if="[61, 63, 65, 66, 67, 80, 81, 82, 95, 96, 99].includes(this.weather.current.weather_code)" />
               <div class="city">
                 <h2>Москва</h2>
                 <div class="current-date">
-                  {{ getCurrentDate.week }}, {{ getCurrentDate.day }} {{ getCurrentDate.month }}
+                  {{ getCurrentDate.week }}, {{ getCurrentDate.dayMonth }}
                 </div>
               </div>
               <div class="temperature">
@@ -368,7 +368,7 @@ export default {
             const objHourlyDateTime = {
               id: newId,
               time: hourlyLocaleTime,
-              temperature: Math.round(hourlyTemp[i]), // Округление почасовой температуры
+              temperature: Math.round(hourlyTemp[i]),
               code: weatherCode[i]
 
             }
@@ -410,7 +410,6 @@ export default {
 
             }
 
-            // Добавление объектов в массив почасовой погоды
             arrHourlyDateTime.push(objHourlyDateTime)
 
           }
@@ -429,20 +428,13 @@ export default {
       const newCurrentDate = {}
 
       const optionsWeek = { weekday: "long" }
-      const firstSymbolWeek = currentDate.toLocaleDateString("ru-RU", optionsWeek).charAt(0).toUpperCase()
-      const otherSymbolWeek = currentDate.toLocaleDateString("ru-RU", optionsWeek).slice(1)
-      const currentWeek = firstSymbolWeek + otherSymbolWeek
-
       const optionsDayMonth = {month: 'long', day: 'numeric'}
-      const firstSymbolMonth = currentDate.toLocaleDateString("ru-RU", optionsDayMonth).charAt(3).toUpperCase()
-      const otherSymbolMonth = currentDate.toLocaleDateString("ru-RU", optionsDayMonth).slice(4)
-      const currentMonth = firstSymbolMonth + otherSymbolMonth
 
-      const currentDay = currentDate.toLocaleDateString("ru-RU", optionsDayMonth).slice(0,2)
+      const currentWeek = currentDate.toLocaleDateString("ru-RU", optionsWeek)
+      const currentDayMonth = currentDate.toLocaleDateString("ru-RU", optionsDayMonth)
 
       newCurrentDate.week = currentWeek
-      newCurrentDate.day = currentDay
-      newCurrentDate.month = currentMonth
+      newCurrentDate.dayMonth = currentDayMonth
 
       return newCurrentDate
     }
@@ -568,6 +560,7 @@ export default {
   display: flex;
   justify-content: center;
   width: 100%;
+  text-transform: capitalize;
   font-size: 1.545vw;
   color: #50778a;
 }

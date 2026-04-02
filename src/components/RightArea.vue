@@ -372,7 +372,7 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 20%;
+  width: 8%;
   font-size: 1.463vw;
   color: #003348;
 }
@@ -386,7 +386,7 @@ export default {
   align-items: center;
   justify-content: space-evenly;
   height: 100%;
-  width: 20%;
+  width: 27%;
   font-size: 1.463vw;
 }
 
@@ -400,7 +400,7 @@ export default {
 
 .progress-bar {
   height: 100%;
-  width: 32%;
+  width: 37%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -412,16 +412,14 @@ export default {
   justify-content: center;
   height: 10%;
   width: 95%;
-  background: radial-gradient(circle, #faae7b33, #1c1f59e8);
+  background: linear-gradient(90deg, rgba(58, 80, 180, 1) 0%);
   border-radius: 55px;
 }
 
 .sun-line {
-  background: linear-gradient(to right, #ffeda0cf, #ffa585db);
+  background: linear-gradient(90deg, rgba(58, 80, 180, 1) 0%, rgba(242, 104, 104, 1) 5%, rgba(255, 112, 112, 1) 8%, rgba(252, 176, 69, 0.94) 24%, rgba(255, 141, 84, 1) 86%, rgba(255, 84, 84, 1) 96%, rgba(58, 80, 180, 1) 100%);
   position: absolute;
   height: 100%;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .icon-sunrise {
