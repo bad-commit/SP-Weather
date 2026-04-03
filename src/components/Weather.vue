@@ -1,5 +1,5 @@
 <template>
-  <div class="main-weather" v-if="getCongestion">
+  <div class="main-weather" v-if="traffic">
     <div class="header-parent">
       <div class="header">
         <div class="header-child">
@@ -51,7 +51,7 @@
                         </svg>
                       </div>
 
-                      <div class="traffic-ligh__text">{{ getCongestion.traffic_score.score }}</div>
+                      <div class="traffic-ligh__text">{{ traffic.traffic_score.score }}</div>
                     </div>
                   </div>
                   <div class="average-speed">
@@ -74,7 +74,7 @@
                       </svg>
 
                       <div class="direct-speed__text">
-                        {{ getCongestion.traffic_speed.direct_speed }} км/ч
+                        {{ traffic.traffic_speed.direct_speed }} км/ч
                       </div>
 
                     </div>
@@ -98,7 +98,7 @@
                       </svg>
 
                       <div class="reverse-speed__text">
-                        {{ getCongestion.traffic_speed.reverse_speed }} км/ч
+                        {{ traffic.traffic_speed.reverse_speed }} км/ч
                       </div>
 
                     </div>
@@ -180,10 +180,7 @@ export default {
   },
 
   computed: {
-    getCongestion() {
-      return this.traffic
-    },
-
+    
     traffic() {
       return store.$state.api.congestion
     },

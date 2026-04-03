@@ -91,7 +91,7 @@
 
                         <div class="today-hourly-icon">
                           <div class="today-hourly__code">
-                            <img :src="`/src/img/icons/${hourly.icon}`" alt="">
+                            <img :src="`/src/img/icons/${hourly.icon}`" alt="icon">
                           </div>
                         </div>
 
@@ -284,7 +284,6 @@ export default {
       }
 
 
-      // Добавление в объект Иконки и Названия, которое будет соответствовать коду погоды (НОЧНЫЕ ИКОНКИ ПОКА НЕ УЧТЕНЫ)
 
       for (let key in this.wmoCode) {
 
@@ -624,8 +623,7 @@ export default {
   bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #50778a
-  ;
+  background-color: #50778a;
 }
 
 .type-weather-text {
