@@ -630,7 +630,6 @@ export default {
 
 .type-weather-text {
   font-size: 2.5vw;
-  /* font-size: 2.865vw; */
   color:#0d2a32;
 }
 
@@ -719,6 +718,7 @@ export default {
 .weather-now-text__value {
   font-size: 1.303vw;
   color: #d8edf6;
+  text-shadow: 0.3px 0.3px 0px #000000;
 }
 
 .weather-now-icon {
@@ -749,6 +749,7 @@ export default {
   height: 25%;
   width: 100%;
   color: #d8edf6;
+  text-shadow: 0.3px 0.3px 0px #000000;
 }
 
 .weather-now-temp__value {
@@ -793,6 +794,10 @@ export default {
   color: #d8edf6;
 }
 
+.today-hourly-time__value {
+  text-shadow: 0.3px 0.3px 0px #000000;
+}
+
 .today-hourly-icon {
   display: flex;
   align-items: center;
@@ -818,6 +823,7 @@ export default {
   height: 25%;
   width: 100%;
   color: #d8edf6;
+  text-shadow: 0.3px 0.3px 0px #000000;
 }
 
 .today-hourly-temp__value {

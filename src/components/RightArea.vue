@@ -352,6 +352,7 @@ export default {
   width: 8%;
   font-size: 1.963vw;
   color: #011725c7;
+  text-shadow: 0.3px 0.3px 0px #0b497178;
 }
 
 .item-code {
@@ -375,6 +376,7 @@ export default {
   width: 8%;
   font-size: 1.463vw;
   color: #003348;
+  text-shadow: 0.3px 0.3px 0px #0b4971;
 }
 
 .item-probability span {
@@ -392,10 +394,12 @@ export default {
 
 .item-temperature__min {
   color: #ababab;
+  text-shadow: 0.5px 1px 1px #000000;
 }
 
 .item-temperature__max {
   color: #011725c7;
+  text-shadow: 0.3px 0.3px 0px #0b4971;
 }
 
 .progress-bar {
@@ -442,6 +446,7 @@ export default {
   transform: translateX(-50%);
   font-size: 0.9vw;
   color: #c08282;
+  text-shadow: 0.3px 0.3px 0px #000000;
 }
 
 .time-sunset {
@@ -451,6 +456,7 @@ export default {
   font-size: 0.9vw;
   color: #6b82aa;
   font-size: 0.85vw;
+  text-shadow: 0.3px 0.3px 0px #000000;
 }
 
 ul:first-of-type li:first-child div .current-circle {
